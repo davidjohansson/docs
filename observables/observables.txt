@@ -1,0 +1,26 @@
+Observables
+-----------
+En pushbaserad motsvarighet till en iterator
+En iterator kontrollerar man själv, med programkod:
+
+Iterator<String> iter = list.iterator();
+while(iter.hasNext()){
+	String s = iter.next();
+}
+
+Man drar ut info ur iteratorn
+
+Med en observable gör man inte det, man sätter bara upp metoder för observablen att anropa:
+
+Observable<String> obs = Observable.from("apa", "bepa", "cepa");
+obs.subscribe(new Observer<String>(){
+
+	@Override
+	public void onNext(String s){
+		System.out.println("here comes " + s);
+	}
+
+});
+
+Att subscribea på en observable är att definiera logikgen kring dess flöde - ungefär som för iteratorn, där man definierar hur man gör med det som tas ut från den.
+Subscribe på observable = koden kring iteratorns hasNext och next
