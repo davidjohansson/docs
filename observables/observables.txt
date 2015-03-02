@@ -24,3 +24,16 @@ obs.subscribe(new Observer<String>(){
 
 Att subscribea på en observable är att definiera logikgen kring dess flöde - ungefär som för iteratorn, där man definierar hur man gör med det som tas ut från den.
 Subscribe på observable = koden kring iteratorns hasNext och next
+
+
+* map, flatmap
+
+flatMap(Func1<? super T,? extends Observable<? extends R>> func)
+
+Returns an Observable that emits items based on applying a function that you supply to each item emitted by the source Observable, where that function returns an Observable, and then merging those resulting Observables and emitting the results of this merger.
+
+map(Func1<? super T,? extends R> func)
+
+Returns an Observable that applies a specified function to each item emitted by the source Observable and emits the results of these function applications.
+
+Om den funktionen man själv tillhandahåller också returnerar en observable
