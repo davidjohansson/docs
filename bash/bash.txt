@@ -1,0 +1,17 @@
+Nedanstående format kan användas tillsammans med en sån här curl
+curl -w "@curl-format.txt" -o /dev/null -s http://localhost:7776//v1/news/butik-ranad-av-bevapnad-person/similarasync
+
+
+
+  time_namelookup:  %{time_namelookup}\n
+      time_connect:  %{time_connect}\n
+   time_appconnect:  %{time_appconnect}\n
+  time_pretransfer:  %{time_pretransfer}\n
+     time_redirect:  %{time_redirect}\n
+time_starttransfer:  %{time_starttransfer}\n
+                   ----------\n
+        time_total:  %{time_total}\n
+--------------------------------------------------------------------------------------
+Diffa outputs från två curls, sida vid sida:
+
+diff -way <(curl http://localhost:7776/v1/news/latest | jpp | grep "\"title\":") <(curl http://sport-api-stage.herokuapp.com/v1/news/latest | jpp | grep "\"title\":")
